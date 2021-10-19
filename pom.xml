@@ -1,0 +1,206 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.zhongshi</groupId>
+		<artifactId>zhongshi-etc-parent</artifactId>
+		<version>1.5.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>zhongshi-etc-basics-gateway</artifactId> 
+	<version>1.5.0-ZHONGSHI-SNAPSHOT</version>
+
+	<properties> 
+		<application-run>com.zhongshi.GatewayApplication</application-run>
+	</properties>
+
+
+	<dependencies>
+ 
+ 
+		<!-- Project Begin -->
+		<dependency>
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-result</artifactId>
+			<version>${zhongshi-etc-result.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.cloud</groupId>
+					<artifactId>spring-cloud-starter-oauth2</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.zhongshi</groupId>
+					<artifactId>zhongshi-etc-common-tool</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-undertow</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-common-tool</artifactId>
+			<version>${zhongshi-etc-common-tool.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>cn.afterturn</groupId> 
+					<artifactId>easypoi-spring-boot-starter</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-config-bootadmin</artifactId>
+			<version>${zhongshi-etc-config-bootadmin.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-config-discovery</artifactId>
+			<version>${zhongshi-etc-config-discovery.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-config-sentinel</artifactId>
+			<version>${zhongshi-etc-config-sentinel.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.github.xiaoymin</groupId>
+			<artifactId>knife4j-spring-boot-starter</artifactId> 
+			<version>3.0.2</version>
+		</dependency> 
+		
+		<dependency> 
+			<groupId>com.zhongshi</groupId>
+			<artifactId>zhongshi-etc-service-base-run</artifactId> 
+			<version>${zhongshi-etc-service-base-run.version}</version>
+		</dependency> 
+		<!-- Project End --> 
+
+
+
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+		
+		<dependency>
+            <groupId>com.alibaba.cloud</groupId>
+            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+        </dependency> 
+
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+		
+		<dependency> 
+			<groupId>org.apache.skywalking</groupId>
+			<artifactId>apm-toolkit-trace</artifactId>
+			<version>${skywalking.version}</version> 
+		</dependency>
+		
+		
+	</dependencies>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- <distributionManagement>
+		<repository>
+			<id>maven-releases</id>
+			<name>Nexus Release Repository</name>
+			<url>http://8.129.174.183:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>maven-snapshots</id>
+			<name>Nexus Snapshot Repository</name>
+			<url>http://8.129.174.183:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+
+	<repositories>
+		<repository>
+			<id>maven-public</id>
+			<name>Nexus Repository</name>
+			<url>http://8.129.174.183:8081/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-public</id>
+			<name>Nexus Plugin Repository</name>
+			<url>http://8.129.174.183:8081/repository/maven-public/</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+		</pluginRepository>
+	</pluginRepositories>
+
+	boot打包 Begin
+	<build>
+		<finalName>${artifactId}</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<version>2.1.5.RELEASE</version>
+				<configuration>
+					<mainClass>${application-run}</mainClass>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.springframework</groupId>
+						<artifactId>springloaded</artifactId>
+						<version>1.2.6.RELEASE</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<failOnMissingWebXml>false</failOnMissingWebXml>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build> -->
+	
+	
+	
+
+</project>
