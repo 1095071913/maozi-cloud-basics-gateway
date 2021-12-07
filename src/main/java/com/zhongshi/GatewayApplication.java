@@ -34,7 +34,7 @@ package com.zhongshi;
 public class GatewayApplication extends  BaseApplication{
 
 	public static void main(String[] args) {
-		ApplicationRun(GatewayApplication.class);
+		ApplicationRun();
 	}
 	
 }
