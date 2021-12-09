@@ -75,7 +75,6 @@ public class NacosRouteService implements ApplicationEventPublisherAware {
     public void dynamicRouteByNacosListener() {
         try {
             ConfigService configService = NacosFactory.createConfigService(serverAddr);
-            configService.getConfig(dataId, group, 5000);
             configService.addListener(dataId, group, new Listener() {
                 @Override
                 public void receiveConfigInfo(String configInfo) {
