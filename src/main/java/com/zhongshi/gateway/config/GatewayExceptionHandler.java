@@ -45,6 +45,7 @@ import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
 import com.zhongshi.factory.BaseResultFactory;
 import com.zhongshi.factory.result.AbstractBaseResult;
 import com.zhongshi.gateway.config.tool.RequestTool;
+import com.zhongshi.tool.ApplicationEnvironmentConfig;
 
 import reactor.core.publisher.Mono;
 
@@ -119,7 +120,7 @@ public class GatewayExceptionHandler extends BaseResultFactory implements ErrorW
 		ServerHttpRequest request = exchange.getRequest();
 		
 		MDC.put("tid",exchange.getAttributes().get("TID"));
-		MDC.put("applicationName", BaseResultFactory.applicationName);
+		MDC.put("applicationName", ApplicationEnvironmentConfig.applicationName);
 		
 		Map<String,String> logs = new LinkedHashMap<String, String>();
 		

@@ -12,6 +12,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import com.zhongshi.factory.BaseResultFactory;
+import com.zhongshi.tool.ApplicationEnvironmentConfig;
 import com.zhongshi.tool.MapperUtils;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
@@ -93,7 +94,7 @@ public class ServerHttpResponseAgent extends ServerHttpResponseDecorator{
 				
 				
 				MDC.put("tid",tid);
-				MDC.put("applicationName", BaseResultFactory.applicationName);
+				MDC.put("applicationName", ApplicationEnvironmentConfig.applicationName);
 				
 				logs.put("respTime", returnTime.toString()+" ms");
 				logs.put("respData", new String(resultByte));
