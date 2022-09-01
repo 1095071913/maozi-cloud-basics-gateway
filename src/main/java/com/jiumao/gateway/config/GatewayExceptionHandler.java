@@ -15,7 +15,7 @@
  * 
  */
 
-package com.zhongshi.gateway.config;
+package com.jiumao.gateway.config;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -41,11 +41,10 @@ import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.alibaba.csp.sentinel.slots.block.authority.AuthorityException;
-import com.zhongshi.factory.BaseResultFactory;
-import com.zhongshi.factory.result.AbstractBaseResult;
-import com.zhongshi.gateway.config.tool.RequestTool;
-import com.zhongshi.tool.ApplicationEnvironmentConfig;
+import com.jiumao.factory.BaseResultFactory;
+import com.jiumao.factory.result.AbstractBaseResult;
+import com.jiumao.gateway.config.tool.RequestTool;
+import com.jiumao.tool.ApplicationEnvironmentConfig;
 
 import reactor.core.publisher.Mono;
 

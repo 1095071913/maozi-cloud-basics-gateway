@@ -54,7 +54,7 @@ import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
-import com.zhongshi.factory.BaseResultFactory;
+import com.jiumao.factory.BaseResultFactory;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelOption;

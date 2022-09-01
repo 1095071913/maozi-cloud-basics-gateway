@@ -15,7 +15,7 @@
  * 
  */
 
-package com.zhongshi;
+package com.jiumao;
 
 /**
  * 

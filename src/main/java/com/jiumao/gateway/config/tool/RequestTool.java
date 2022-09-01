@@ -1,4 +1,4 @@
-package com.zhongshi.gateway.config.tool;
+package com.jiumao.gateway.config.tool;
 
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
