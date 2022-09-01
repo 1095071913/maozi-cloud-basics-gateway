@@ -3,26 +3,30 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.zhongshi</groupId>
-		<artifactId>zhongshi-etc-parent</artifactId>
+		<groupId>com.jiumao</groupId>
+		<artifactId>jiumao-saas-parent</artifactId>
 		<version>1.5.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>zhongshi-etc-basics-gateway</artifactId> 
-	<version>1.5.0-ZHONGSHI-SNAPSHOT</version>
+	<artifactId>jiumao-saas-basics-gateway</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 
-	<properties> 
-		<application-run>com.zhongshi.GatewayApplication</application-run>
+	<properties>
+		<application-run>com.jiumao.GatewayApplication</application-run>
 	</properties>
 
 
 	<dependencies>
- 
- 
+
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+		</dependency>
+
 		<!-- Project Begin -->
 		<dependency>
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-result</artifactId>
-			<version>${zhongshi-etc-result.version}</version>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-result</artifactId>
+			<version>${jiumao-saas-result.version}</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.springframework.cloud</groupId>
@@ -33,8 +37,8 @@
 					<artifactId>spring-boot-starter-web</artifactId>
 				</exclusion>
 				<exclusion>
-					<groupId>com.zhongshi</groupId>
-					<artifactId>zhongshi-etc-common-tool</artifactId>
+					<groupId>com.jiumao</groupId>
+					<artifactId>jiumao-saas-common-tool</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>org.springframework.boot</groupId>
@@ -44,47 +48,47 @@
 		</dependency>
 
 		<dependency>
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-common-tool</artifactId>
-			<version>${zhongshi-etc-common-tool.version}</version>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-common-tool</artifactId>
+			<version>${jiumao-saas-common-tool.version}</version>
 			<exclusions>
 				<exclusion>
-					<groupId>cn.afterturn</groupId> 
+					<groupId>cn.afterturn</groupId>
 					<artifactId>easypoi-spring-boot-starter</artifactId>
 				</exclusion>
 			</exclusions>
 		</dependency>
 
 		<dependency>
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-config-bootadmin</artifactId>
-			<version>${zhongshi-etc-config-bootadmin.version}</version>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-config-bootadmin</artifactId>
+			<version>${jiumao-saas-config-bootadmin.version}</version>
+		</dependency>
+ 
+		<dependency>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-config-discovery</artifactId>
+			<version>${jiumao-saas-config-discovery.version}</version>
 		</dependency>
 
 		<dependency>
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-config-discovery</artifactId>
-			<version>${zhongshi-etc-config-discovery.version}</version>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-config-sentinel</artifactId>
+			<version>${jiumao-saas-config-sentinel.version}</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-config-sentinel</artifactId>
-			<version>${zhongshi-etc-config-sentinel.version}</version>
-		</dependency>
-		
+
 		<dependency>
 			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-spring-boot-starter</artifactId> 
-			<version>3.0.2</version>
-		</dependency> 
-		
-		<dependency> 
-			<groupId>com.zhongshi</groupId>
-			<artifactId>zhongshi-etc-service-base-run</artifactId> 
-			<version>${zhongshi-etc-service-base-run.version}</version>
-		</dependency> 
-		<!-- Project End --> 
+			<artifactId>knife4j-spring-boot-starter</artifactId>
+			<version>3.0.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jiumao</groupId>
+			<artifactId>jiumao-saas-service-base-run</artifactId>
+			<version>${jiumao-saas-service-base-run.version}</version>
+		</dependency>
+		<!-- Project End -->
 
 
 
@@ -93,54 +97,53 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-gateway</artifactId>
 		</dependency>
-		
+
 		<dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
-        </dependency> 
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-alibaba-sentinel-gateway</artifactId>
+		</dependency>
 
 		<dependency>
 			<groupId>com.alibaba.cloud</groupId>
 			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
 		</dependency>
-		
-		<dependency> 
+
+		<dependency>
 			<groupId>org.apache.skywalking</groupId>
 			<artifactId>apm-toolkit-trace</artifactId>
-			<version>${skywalking.version}</version> 
+			<version>${skywalking.version}</version>
 		</dependency>
-		
-		
+
+
 	</dependencies>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<!-- <distributionManagement>
+
+
+
+
+
+
+
+
+
+
+
+	<distributionManagement>
 		<repository>
 			<id>maven-releases</id>
 			<name>Nexus Release Repository</name>
-			<url>http://8.129.174.183:8081/repository/maven-releases/</url>
+			<url>http://175.178.52.106:8081/repository/maven-releases/</url>
 		</repository>
 		<snapshotRepository>
 			<id>maven-snapshots</id>
 			<name>Nexus Snapshot Repository</name>
-			<url>http://8.129.174.183:8081/repository/maven-snapshots/</url>
+			<url>http://175.178.52.106:8081/repository/maven-snapshots/</url>
 		</snapshotRepository>
 	</distributionManagement>
-
 	<repositories>
 		<repository>
 			<id>maven-public</id>
 			<name>Nexus Repository</name>
-			<url>http://8.129.174.183:8081/repository/maven-public/</url>
+			<url>http://175.178.52.106:8081/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -149,12 +152,11 @@
 			</releases>
 		</repository>
 	</repositories>
-
 	<pluginRepositories>
 		<pluginRepository>
 			<id>maven-public</id>
 			<name>Nexus Plugin Repository</name>
-			<url>http://8.129.174.183:8081/repository/maven-public/</url>
+			<url>http://175.178.52.106:8081/repository/maven-public/</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
@@ -164,7 +166,11 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-	boot打包 Begin
+
+
+
+
+	<!-- boot打包 Begin -->
 	<build>
 		<finalName>${artifactId}</finalName>
 		<plugins>
@@ -198,9 +204,10 @@
 				</configuration>
 			</plugin>
 		</plugins>
-	</build> -->
-	
-	
-	
+	</build>
+	<!-- boot打包 End -->
+
+
+
 
 </project>

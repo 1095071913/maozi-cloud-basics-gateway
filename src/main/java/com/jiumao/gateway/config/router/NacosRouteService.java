@@ -15,7 +15,7 @@
  * 
  */
 
-package com.zhongshi.gateway.config.router;
+package com.jiumao.gateway.config.router;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +57,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class NacosRouteService implements ApplicationEventPublisherAware {
  
-    private String dataId = "gateway-router";
+    private String dataId = "gateway-saas-router.json";
  
     private String group = "DEFAULT_GROUP";
  

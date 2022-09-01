@@ -15,18 +15,21 @@
  * 
  */
 
-package com.zhongshi.gateway.config.filters;
+package com.jiumao.gateway.config.filters;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
+
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-import com.zhongshi.factory.BaseResultFactory;
-import com.zhongshi.gateway.config.ServerHttpResponseAgent;
-import com.zhongshi.gateway.config.tool.RequestTool;
+
+import com.jiumao.factory.BaseResultFactory;
+import com.jiumao.gateway.config.ServerHttpResponseAgent;
+import com.jiumao.gateway.config.tool.RequestTool;
+
 import reactor.core.publisher.Mono;
 
 /**

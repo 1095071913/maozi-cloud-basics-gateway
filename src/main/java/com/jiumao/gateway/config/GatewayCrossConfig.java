@@ -1,4 +1,4 @@
-package com.zhongshi.gateway.config;
+package com.jiumao.gateway.config;
 
 import org.springframework.cloud.client.discovery.ReactiveDiscoveryClient;
 import org.springframework.cloud.gateway.discovery.DiscoveryClientRouteDefinitionLocator;
