@@ -1,4 +1,4 @@
-package com.jiumao.gateway.config;
+package com.maozi.gateway.config;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 
-import com.jiumao.factory.BaseResultFactory;
-import com.jiumao.tool.ApplicationEnvironmentConfig;
-import com.jiumao.tool.MapperUtils;
+import com.maozi.factory.BaseResultFactory;
+import com.maozi.tool.ApplicationEnvironmentConfig;
+import com.maozi.tool.MapperUtils;
 
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;

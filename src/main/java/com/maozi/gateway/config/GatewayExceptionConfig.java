@@ -16,7 +16,7 @@
  */
 
 
-package com.jiumao.gateway.config;
+package com.maozi.gateway.config;
 
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;

@@ -1,5 +1,5 @@
-package com.jiumao.gateway.config.filters;
-//package com.zhongshi.gateway.config.filters;
+package com.maozi.gateway.config.filters;
+//package com.maozi.gateway.config.filters;
 //
 //import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 //import org.springframework.cloud.gateway.filter.GlobalFilter;
@@ -11,7 +11,7 @@ package com.jiumao.gateway.config.filters;
 //import org.springframework.http.server.reactive.ServerHttpRequestDecorator;
 //import org.springframework.stereotype.Component;
 //import org.springframework.web.server.ServerWebExchange;
-//import com.zhongshi.factory.BaseResultFactory;
+//import com.maozi.factory.BaseResultFactory;
 //import reactor.core.publisher.Flux;
 //import reactor.core.publisher.Mono;
 //

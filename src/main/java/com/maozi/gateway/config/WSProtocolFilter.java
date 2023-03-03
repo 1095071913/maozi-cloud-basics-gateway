@@ -1,4 +1,5 @@
-//package com.jiumao.gateway.config;
+package com.maozi.gateway.config;
+//package com.maozi.gateway.config;
 ///*
 // * Copyright 2012-2018 the original author or authors.
 // *
@@ -24,7 +25,7 @@
 //import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 //import org.springframework.stereotype.Component;
 //
-//import com.jiumao.factory.BaseResultFactory;
+//import com.maozi.factory.BaseResultFactory;
 //
 ///**
 // * 

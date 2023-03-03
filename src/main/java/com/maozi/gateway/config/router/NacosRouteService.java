@@ -15,7 +15,7 @@
  * 
  */
 
-package com.jiumao.gateway.config.router;
+package com.maozi.gateway.config.router;
 
 import java.util.ArrayList;
 import java.util.List;

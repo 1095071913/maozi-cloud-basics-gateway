@@ -15,7 +15,7 @@
  * 
  */
 
-package com.jiumao.gateway.config.filters;
+package com.maozi.gateway.config.filters;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -26,9 +26,9 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.jiumao.factory.BaseResultFactory;
-import com.jiumao.gateway.config.ServerHttpResponseAgent;
-import com.jiumao.gateway.config.tool.RequestTool;
+import com.maozi.factory.BaseResultFactory;
+import com.maozi.gateway.config.ServerHttpResponseAgent;
+import com.maozi.gateway.config.tool.RequestTool;
 
 import reactor.core.publisher.Mono;
 

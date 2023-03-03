@@ -15,7 +15,7 @@
  * 
  */
 
-package com.jiumao.gateway.config;
+package com.maozi.gateway.config;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -31,6 +31,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.codec.HttpMessageReader;
 import org.springframework.http.codec.HttpMessageWriter;
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 import org.springframework.web.reactive.function.BodyInserters;
 import org.springframework.web.reactive.function.server.RequestPredicates;
@@ -41,10 +42,10 @@ import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.jiumao.factory.BaseResultFactory;
-import com.jiumao.factory.result.AbstractBaseResult;
-import com.jiumao.gateway.config.tool.RequestTool;
-import com.jiumao.tool.ApplicationEnvironmentConfig;
+import com.maozi.factory.BaseResultFactory;
+import com.maozi.factory.result.AbstractBaseResult;
+import com.maozi.gateway.config.tool.RequestTool;
+import com.maozi.tool.ApplicationEnvironmentConfig;
 
 import reactor.core.publisher.Mono;
 
@@ -62,6 +63,7 @@ import reactor.core.publisher.Mono;
  *
  */
 
+@Component
 public class GatewayExceptionHandler extends BaseResultFactory implements ErrorWebExceptionHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(GatewayExceptionHandler.class);

@@ -1,4 +1,4 @@
-package com.jiumao.gateway.config.swagger;
+package com.maozi.gateway.config.swagger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class SwaggerResourceConfig implements SwaggerResourcesProvider {
                     .filter(predicateDefinition -> ("Path").equalsIgnoreCase(predicateDefinition.getName()))
                     .forEach(predicateDefinition -> resources.add(swaggerResource(route.getId(),
                             predicateDefinition.getArgs().get(NameUtils.GENERATED_NAME_PREFIX + "0")
-                                    .replace("**", "v2/api-docs?group="+route.getId().toLowerCase()))));
+                                    .replace("**", "v3/api-docs?group="+route.getId().toLowerCase()))));
         });
 
         return resources;
