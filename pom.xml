@@ -5,24 +5,30 @@
 	<parent>
 		<groupId>com.maozi</groupId>
 		<artifactId>maozi-cloud-parent</artifactId>
-		<version>1.5.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>maozi-cloud-basics-gateway</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>${revision}</version>
+
 
 	<properties>
+		
+		<revision>1.2.0-SNAPSHOT</revision>
+		
 		<application-run>com.maozi.GatewayApplication</application-run>
+		
 	</properties>
 
 
 	<dependencies>
 
-		<dependency>
-			<groupId>org.codehaus.janino</groupId>
-			<artifactId>janino</artifactId>
-		</dependency>
-
 		<!-- Project Begin -->
+		<dependency>
+			<groupId>com.maozi</groupId>
+			<artifactId>maozi-cloud-service-base-run</artifactId>
+			<version>${maozi-cloud-service-base-run.version}</version>
+		</dependency>
+		
 		<dependency>
 			<groupId>com.maozi</groupId>
 			<artifactId>maozi-cloud-result</artifactId>
@@ -76,22 +82,21 @@
 			<artifactId>maozi-cloud-config-sentinel</artifactId>
 			<version>${maozi-cloud-config-sentinel.version}</version>
 		</dependency>
-
-		<dependency>
-			<groupId>com.github.xiaoymin</groupId>
-			<artifactId>knife4j-spring-boot-starter</artifactId>
-			<version>3.0.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.maozi</groupId>
-			<artifactId>maozi-cloud-service-base-run</artifactId>
-			<version>${maozi-cloud-service-base-run.version}</version>
-		</dependency>
 		<!-- Project End -->
 
 
 
+
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.skywalking</groupId>
+			<artifactId>apm-toolkit-trace</artifactId>
+			<version>${skywalking.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
@@ -109,9 +114,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.skywalking</groupId>
-			<artifactId>apm-toolkit-trace</artifactId>
-			<version>${skywalking.version}</version>
+    		<groupId>com.github.xiaoymin</groupId>
+    		<artifactId>knife4j-gateway-spring-boot-starter</artifactId>
+    		<version>4.0.0</version>
 		</dependency>
 
 

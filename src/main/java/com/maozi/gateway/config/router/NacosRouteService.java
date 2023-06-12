@@ -57,7 +57,7 @@ import reactor.core.publisher.Mono;
 @Component
 public class NacosRouteService implements ApplicationEventPublisherAware {
  
-    private String dataId = "gateway-saas-router.json";
+    private String dataId = "maozi-cloud-gateway-router.json";
  
     private String group = "DEFAULT_GROUP";
  

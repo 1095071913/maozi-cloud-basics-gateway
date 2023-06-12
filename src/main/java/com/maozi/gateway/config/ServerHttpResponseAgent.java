@@ -13,7 +13,7 @@ import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
 
-import com.maozi.factory.BaseResultFactory;
+import com.maozi.common.BaseCommon;
 import com.maozi.tool.ApplicationEnvironmentConfig;
 import com.maozi.tool.MapperUtils;
 
@@ -86,7 +86,7 @@ public class ServerHttpResponseAgent extends ServerHttpResponseDecorator{
 				
 				Object tid = attributes.get("TID");
 				
-				if(!BaseResultFactory.isNull(result) && result.containsKey("code") && result.containsKey("success")) {	
+				if(!BaseCommon.isNull(result) && result.containsKey("code") && result.containsKey("success")) {	
 					customResultBoo=true;
 					result.put("id",tid);
 				}
@@ -104,12 +104,12 @@ public class ServerHttpResponseAgent extends ServerHttpResponseDecorator{
 				
 				
 				if(getDelegate().getRawStatusCode()!=200) {
-					log.error(BaseResultFactory.appendLog(logs).toString()); 
+					log.error(BaseCommon.appendLog(logs).toString()); 
 				}else {  
-					if(!BaseResultFactory.isNull(result) && !BaseResultFactory.isNull(result.get("code")) && !"200".equals(result.get("code").toString())) {
-						log.error(BaseResultFactory.appendLog(logs).toString());
+					if(!BaseCommon.isNull(result) && !BaseCommon.isNull(result.get("code")) && !"200".equals(result.get("code").toString())) {
+						log.error(BaseCommon.appendLog(logs).toString());
 					}else {
-						log.info(BaseResultFactory.appendLog(logs).toString());
+						log.info(BaseCommon.appendLog(logs).toString());
 					}
 				}
 				getDelegate().getHeaders().setContentLength(resultByte.length);

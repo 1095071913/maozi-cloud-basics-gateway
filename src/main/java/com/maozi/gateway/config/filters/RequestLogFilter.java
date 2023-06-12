@@ -26,9 +26,9 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.maozi.factory.BaseResultFactory;
+import com.maozi.common.BaseCommon;
 import com.maozi.gateway.config.ServerHttpResponseAgent;
-import com.maozi.gateway.config.tool.RequestTool;
+import com.maozi.gateway.config.utils.RequestTool;
 
 import reactor.core.publisher.Mono;
 
@@ -47,7 +47,7 @@ import reactor.core.publisher.Mono;
  */
 
 @Component
-public class RequestLogFilter extends BaseResultFactory implements GlobalFilter, Ordered {
+public class RequestLogFilter extends BaseCommon implements GlobalFilter, Ordered {
 	
 	
 	@Override

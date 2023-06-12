@@ -42,9 +42,9 @@ import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 
 import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.maozi.factory.BaseResultFactory;
-import com.maozi.factory.result.AbstractBaseResult;
-import com.maozi.gateway.config.tool.RequestTool;
+import com.maozi.common.BaseCommon;
+import com.maozi.common.result.error.ErrorResult;
+import com.maozi.gateway.config.utils.RequestTool;
 import com.maozi.tool.ApplicationEnvironmentConfig;
 
 import reactor.core.publisher.Mono;
@@ -64,7 +64,7 @@ import reactor.core.publisher.Mono;
  */
 
 @Component
-public class GatewayExceptionHandler extends BaseResultFactory implements ErrorWebExceptionHandler {
+public class GatewayExceptionHandler extends BaseCommon implements ErrorWebExceptionHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(GatewayExceptionHandler.class);
 
@@ -74,7 +74,7 @@ public class GatewayExceptionHandler extends BaseResultFactory implements ErrorW
 
 	private List<ViewResolver> viewResolvers = Collections.emptyList();
 
-	private ThreadLocal<AbstractBaseResult> exceptionHandlerResult = new ThreadLocal<>();
+	private ThreadLocal<ErrorResult> exceptionHandlerResult = new ThreadLocal<>();
 
 	public void setMessageReaders(List<HttpMessageReader<?>> messageReaders) {
 		Assert.notNull(messageReaders, "'messageReaders' must not be null");
@@ -91,7 +91,7 @@ public class GatewayExceptionHandler extends BaseResultFactory implements ErrorW
 	}
 
 	protected Mono<ServerResponse> renderErrorResponse(ServerRequest request) {
-		AbstractBaseResult result = exceptionHandlerResult.get();
+		ErrorResult result = exceptionHandlerResult.get();
 		return ServerResponse.status(result.getHttpCode()).contentType(MediaType.APPLICATION_JSON_UTF8)
 				.body(BodyInserters.fromObject(result));
 	}
@@ -116,7 +116,7 @@ public class GatewayExceptionHandler extends BaseResultFactory implements ErrorW
 	@Override
 	public Mono<Void> handle(ServerWebExchange exchange, Throwable e) {
 		
-		AbstractBaseResult result = null;
+		ErrorResult result = null;
 
 		ServerHttpRequest request = exchange.getRequest();
 		
@@ -137,14 +137,14 @@ public class GatewayExceptionHandler extends BaseResultFactory implements ErrorW
 		if (e instanceof NotFoundException) {
 			result = error(code(404),404);
 		}else if(BlockException.isBlockException(e)){
-			result =error(code(601),500);
+			result = error(code(601),500);
 		}else {
 			result = error(code(500),500);
 		}
 		
 		logs.put("respData", result.toString());
 		
-		log.error(BaseResultFactory.appendLog(logs).toString());
+		log.error(BaseCommon.appendLog(logs).toString());
 		
 		if (exchange.getResponse().isCommitted()) {
 			return Mono.error(e);

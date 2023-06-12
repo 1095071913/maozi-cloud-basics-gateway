@@ -31,7 +31,7 @@ package com.maozi;
  *
  */
 
-public class GatewayApplication extends BaseApplication{
+public class GatewayApplication extends BaseApplication {
 
 	public static void main(String[] args) {
 		ApplicationRun();

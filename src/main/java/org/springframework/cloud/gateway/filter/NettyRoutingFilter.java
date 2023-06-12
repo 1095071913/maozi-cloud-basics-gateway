@@ -55,7 +55,7 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.server.ServerWebExchange;
 
-import com.maozi.factory.BaseResultFactory;
+import com.maozi.common.BaseCommon;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -71,7 +71,7 @@ import reactor.netty.http.client.HttpClientResponse;
  * @author Spencer Gibb
  * @author Biju Kunjummen
  */
-public class NettyRoutingFilter extends BaseResultFactory implements GlobalFilter, Ordered {
+public class NettyRoutingFilter extends BaseCommon implements GlobalFilter, Ordered {
 
 	private static final Log log = LogFactory.getLog(NettyRoutingFilter.class);
 
@@ -110,7 +110,7 @@ public class NettyRoutingFilter extends BaseResultFactory implements GlobalFilte
 		
 //		functionParam(exchange.getAttribute("param"));
 		
-		String tid = BaseResultFactory.getTraceId();
+		String tid = BaseCommon.getTraceId();
 		if(!isNull(tid)) {
 			exchange.getAttributes().put("TID", tid);
 		}
