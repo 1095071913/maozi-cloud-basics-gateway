@@ -6,7 +6,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import reactor.core.publisher.Flux;
 
-public class RequestTool {
+public class RequestUtils {
 	
 	
 	public static String getIpAddress(ServerHttpRequest request) {
@@ -35,7 +35,7 @@ public class RequestTool {
 	    if (ip == null || ip.length() == 0 || "unknown".equalsIgnoreCase(ip)) { 
 	        ip = request.getRemoteAddress().getAddress().getHostAddress();
 	    }
-	    return ip.equals("0:0:0:0:0:0:0:1")?"127.0.0.1":ip; 
+	    return "0:0:0:0:0:0:0:1".equals(ip)?"127.0.0.1":ip;
 	}
 
 	public static String getBody(Flux<DataBuffer> body) {

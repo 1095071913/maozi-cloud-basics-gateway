@@ -1,4 +1,4 @@
-package com.maozi.gateway.config;
+package com.maozi.gateway.config.filter;
 //package com.maozi.gateway.config;
 ///*
 // * Copyright 2012-2018 the original author or authors.

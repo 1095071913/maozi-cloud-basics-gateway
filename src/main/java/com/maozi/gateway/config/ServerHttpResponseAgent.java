@@ -1,9 +1,12 @@
 package com.maozi.gateway.config;
 
+import com.maozi.common.BaseCommon;
+import com.maozi.utils.MapperUtils;
+import com.maozi.utils.context.ApplicationEnvironmentContext;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.Map;
-
+import lombok.extern.slf4j.Slf4j;
 import org.jboss.logging.MDC;
 import org.reactivestreams.Publisher;
 import org.springframework.core.io.buffer.DataBuffer;
@@ -12,12 +15,6 @@ import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.http.server.reactive.ServerHttpResponse;
 import org.springframework.http.server.reactive.ServerHttpResponseDecorator;
-
-import com.maozi.common.BaseCommon;
-import com.maozi.tool.ApplicationEnvironmentConfig;
-import com.maozi.tool.MapperUtils;
-
-import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -91,16 +88,13 @@ public class ServerHttpResponseAgent extends ServerHttpResponseDecorator{
 					result.put("id",tid);
 				}
 				
-				
-				
 				byte[] resultByte=(customResultBoo?MapperUtils.mapToJson(result).getBytes():outputStream.toByteArray());
-				
-				
+
 				MDC.put("tid",tid);
-				MDC.put("applicationName", ApplicationEnvironmentConfig.applicationName);
+				MDC.put("applicationName", ApplicationEnvironmentContext.applicationName);
 				
-				logs.put("respTime", returnTime.toString()+" ms");
-				logs.put("respData", new String(resultByte));
+				logs.put("RT", returnTime.toString()+" ms");
+				logs.put("Data", new String(resultByte));
 				
 				
 				if(getDelegate().getRawStatusCode()!=200) {
@@ -112,16 +106,17 @@ public class ServerHttpResponseAgent extends ServerHttpResponseDecorator{
 						log.info(BaseCommon.appendLog(logs).toString());
 					}
 				}
+
 				getDelegate().getHeaders().setContentLength(resultByte.length);
 				
 				try {return bufferFactory.wrap(resultByte); } catch (Exception e) {return null;}finally {try {outputStream.close();} catch (IOException e) {}MDC.clear();}
 				
-	          })); 
+	          }));
+
 		}
+
 		return super.writeWith(body);
+
 	}
-	
-	
-	
 
 }

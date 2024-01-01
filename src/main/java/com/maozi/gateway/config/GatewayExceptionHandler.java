@@ -17,11 +17,16 @@
 
 package com.maozi.gateway.config;
 
+import com.alibaba.csp.sentinel.slots.block.BlockException;
+import com.maozi.common.BaseCommon;
+import com.maozi.common.result.code.CodeAttribute;
+import com.maozi.common.result.error.ErrorResult;
+import com.maozi.gateway.config.utils.RequestUtils;
+import com.maozi.utils.context.ApplicationEnvironmentContext;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
 import org.jboss.logging.MDC;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,13 +45,6 @@ import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
-
-import com.alibaba.csp.sentinel.slots.block.BlockException;
-import com.maozi.common.BaseCommon;
-import com.maozi.common.result.error.ErrorResult;
-import com.maozi.gateway.config.utils.RequestTool;
-import com.maozi.tool.ApplicationEnvironmentConfig;
-
 import reactor.core.publisher.Mono;
 
 /**
@@ -115,41 +113,41 @@ public class GatewayExceptionHandler extends BaseCommon implements ErrorWebExcep
 
 	@Override
 	public Mono<Void> handle(ServerWebExchange exchange, Throwable e) {
-		
-		ErrorResult result = null;
 
 		ServerHttpRequest request = exchange.getRequest();
-		
+
 		MDC.put("tid",exchange.getAttributes().get("TID"));
-		MDC.put("applicationName", ApplicationEnvironmentConfig.applicationName);
+		MDC.put("applicationName", ApplicationEnvironmentContext.applicationName);
 		
 		Map<String,String> logs = new LinkedHashMap<String, String>();
 		
-		logs.put("reqType", "gateway");
-		logs.put("reqIp", RequestTool.getIpAddress(request)+" net");
-		logs.put("reqUrl", request.getURI().toString());
-		logs.put("reqMethod", request.getMethod().toString());
-        logs.put("errorDesc", e.getLocalizedMessage());
+		logs.put("Type", "Gateway");
+		logs.put("IP", RequestUtils.getIpAddress(request));
+		logs.put("URI", request.getURI().toString());
+		logs.put("Method", request.getMethod().toString());
+        logs.put("ErrorDesc", e.getLocalizedMessage());
         
         
         log.error(getStackTrace(e));
 
+		ErrorResult result = null;
+
 		if (e instanceof NotFoundException) {
-			result = error(code(404),404);
+			result = error(new CodeAttribute<>(404,"服务不存在"),404);
 		}else if(BlockException.isBlockException(e)){
-			result = error(code(601),500);
+			result = error(new CodeAttribute<>(429,"限流中"),429);
 		}else {
-			result = error(code(500),500);
+			result = error(new CodeAttribute<>(500,"内部服务错误"),500);
 		}
 		
-		logs.put("respData", result.toString());
+		logs.put("Data", result.toString());
 		
 		log.error(BaseCommon.appendLog(logs).toString());
 		
 		if (exchange.getResponse().isCommitted()) {
 			return Mono.error(e);
 		}
-		
+
 		MDC.clear();
 		
 		exceptionHandlerResult.set(result);

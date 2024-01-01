@@ -17,19 +17,16 @@
 
 package com.maozi.gateway.config.filters;
 
+import com.maozi.common.BaseCommon;
+import com.maozi.gateway.config.ServerHttpResponseAgent;
+import com.maozi.gateway.config.utils.RequestUtils;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
-
-import com.maozi.common.BaseCommon;
-import com.maozi.gateway.config.ServerHttpResponseAgent;
-import com.maozi.gateway.config.utils.RequestTool;
-
 import reactor.core.publisher.Mono;
 
 /**
@@ -57,10 +54,10 @@ public class RequestLogFilter extends BaseCommon implements GlobalFilter, Ordere
 		
 		Map<String,String> logs = new LinkedHashMap<String, String>();
 		
-		logs.put("reqIp", RequestTool.getIpAddress(exchange.getRequest())+" net");
-		logs.put("reqType", "gateway");
-		logs.put("reqUrl", exchange.getRequest().getURI().toString());
-		logs.put("reqMethod", exchange.getRequest().getMethod().toString());
+		logs.put("IP", RequestUtils.getIpAddress(exchange.getRequest()));
+		logs.put("Type", "Gateway");
+		logs.put("URI", exchange.getRequest().getURI().toString());
+		logs.put("Method", exchange.getRequest().getMethod().toString());
 		
 		return chain.filter(exchange.mutate().response(new ServerHttpResponseAgent(requestTime, logs, exchange.getRequest(), exchange.getResponse(),exchange.getAttributes())).build());
 		

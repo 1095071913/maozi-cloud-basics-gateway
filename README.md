@@ -62,10 +62,10 @@ spring:
           predicates:
           - Path=/user/**
 
-        - id: MAOZI-CLOUD-SSO
-          uri: lb://maozi-cloud-sso
+        - id: MAOZI-CLOUD-OAUTH
+          uri: lb://maozi-cloud-oauth
           predicates:
-          - Path=/sso/**
+          - Path=/oauth/**
           
 ```
 
@@ -85,6 +85,6 @@ spring:
 
 https://gitee.com/xmaozi/maozi-cloud-user  或
 
-https://gitee.com/xmaozi/maozi-cloud-sso
+https://gitee.com/xmaozi/maozi-cloud-oauth
 
 不然会报错找不到，看到user模块的文档即可成功
