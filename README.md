@@ -4,4 +4,4 @@
 
 处理系统的网关功能，比如 流量入口转发、黑白名单、限流、IP黑白名单 等
 
-该服务启动前，需要开发者看完[【文档】](https://github.com/1095071913/maozi-cloud-parent/blob/release/README.md)才可避免有坑 启动成功
+该服务启动前，需要开发者看完[【文档】](https://www.yuque.com/pengjinlong/maozi-cloud-parent)才可避免有坑 启动成功
