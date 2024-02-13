@@ -21,7 +21,7 @@ import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.maozi.common.BaseCommon;
 import com.maozi.common.result.code.CodeAttribute;
 import com.maozi.common.result.error.ErrorResult;
-import com.maozi.gateway.config.utils.RequestUtils;
+import com.maozi.gateway.utils.RequestUtils;
 import com.maozi.utils.context.ApplicationEnvironmentContext;
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -46,20 +46,6 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.reactive.result.view.ViewResolver;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-/**
- * 
- * 功能说明：网关错误映射器
- * 
- * 功能作者：彭晋龙 ( 联系方式QQ/微信：1095071913 )
- *
- * 创建日期：2019-10-31 ：20:16:00
- *
- * 版权归属：蓝河团队
- *
- * 协议说明：Apache2.0（ 文件顶端 ）
- *
- */
 
 @Component
 public class GatewayExceptionHandler extends BaseCommon implements ErrorWebExceptionHandler {

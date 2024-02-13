@@ -1,4 +1,4 @@
-package com.maozi.gateway.config.utils;
+package com.maozi.gateway.utils;
 
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;

@@ -15,11 +15,11 @@
  * 
  */
 
-package com.maozi.gateway.config.filters;
+package com.maozi.gateway.filter;
 
 import com.maozi.common.BaseCommon;
 import com.maozi.gateway.config.ServerHttpResponseAgent;
-import com.maozi.gateway.config.utils.RequestUtils;
+import com.maozi.gateway.utils.RequestUtils;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -28,20 +28,6 @@ import org.springframework.core.Ordered;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
-
-/**
- * 
- * 功能说明：网关日志收集
- * 
- * 功能作者：彭晋龙 ( 联系方式QQ/微信：1095071913 )
- *
- * 创建日期：2019-08-05 ：15:56:00
- *
- * 版权归属：蓝河团队
- *
- * 协议说明：Apache2.0（ 文件顶端 ）
- *
- */
 
 @Component
 public class RequestLogFilter extends BaseCommon implements GlobalFilter, Ordered {
@@ -59,7 +45,7 @@ public class RequestLogFilter extends BaseCommon implements GlobalFilter, Ordere
 		logs.put("URI", exchange.getRequest().getURI().toString());
 		logs.put("Method", exchange.getRequest().getMethod().toString());
 		
-		return chain.filter(exchange.mutate().response(new ServerHttpResponseAgent(requestTime, logs, exchange.getRequest(), exchange.getResponse(),exchange.getAttributes())).build());
+		return chain.filter(exchange.mutate().response(new ServerHttpResponseAgent(requestTime, logs,exchange.getResponse(),exchange.getAttributes())).build());
 		
 	}
 	

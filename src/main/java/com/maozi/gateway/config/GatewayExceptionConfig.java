@@ -30,22 +30,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.http.codec.ServerCodecConfigurer;
 import org.springframework.web.reactive.result.view.ViewResolver;
 
-
-/**
- * 
- * 	功能说明：网关错误日志配置
- * 
- *	功能作者：彭晋龙 ( 联系方式QQ/微信：1095071913 )
- *
- *	创建日期：2019-10-31 ：20:16:00
- *
- *	版权归属：蓝河团队
- *
- *	协议说明：Apache2.0（ 文件顶端 ）
- *
- */
-
-
 @Configuration
 public class GatewayExceptionConfig {
     @Primary

@@ -1,4 +1,4 @@
-package com.maozi.gateway.config.filter;
+package com.maozi.gateway.filter;
 
 import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_SCHEME_PREFIX_ATTR;
 
